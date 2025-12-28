@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Blog & Wawasan - Seasonal Home Decor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#db7706",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#231a0f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2f2418",
+                        "text-main-light": "#1c150d",
+                        "text-main-dark": "#fcfaf8",
+                        "text-muted-light": "#9e7647",
+                        "text-muted-dark": "#d6c0a0",
+                    },
+                    fontFamily: { "display": ["Plus Jakarta Sans", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .blog-card.hidden { display: none !important; }
+        #mobileMenu { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .blog-card { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <header class="sticky top-0 z-50 border-b border-[#f4eee6] dark:border-[#3e3428] bg-white dark:bg-background-dark px-6 py-4 lg:px-20">
+        <div class="mx-auto flex max-w-[1280px] items-center justify-between">
+            
+            <a href="index.html" class="flex items-center gap-3 group active:scale-95 transition-all">
+                <div class="size-8 text-primary">
+                    <svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Seasonal Decor</h1>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="collections.html">Shop</a>
+                <a class="text-sm font-bold text-primary transition-colors" href="blog.html">Blog</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="about.html">About Us</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="flex size-10 items-center justify-center rounded-xl bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] hover:text-primary transition-all"><span class="material-symbols-outlined text-[20px]">search</span></button>
+                <button id="menuBtn" class="md:hidden flex size-10 items-center justify-center rounded-xl bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428]"><span class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="fixed inset-y-0 right-0 w-[80%] max-w-[300px] bg-white dark:bg-surface-dark z-[60] shadow-2xl translate-x-full md:hidden flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-[#3e3428]">
+                <span class="font-bold text-primary uppercase text-xs tracking-widest">Menu</span>
+                <button id="closeMenu" class="size-10 flex items-center justify-center rounded-full bg-gray-50 dark:bg-background-dark"><span class="material-symbols-outlined text-xl">close</span></button>
+            </div>
+            <nav class="flex flex-col p-4 gap-2">
+                <a class="px-5 py-4 rounded-2xl font-bold text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-background-dark transition-all flex justify-between items-center" href="index.html">Home <span class="material-symbols-outlined text-sm opacity-20">chevron_right</span></a>
+                <a class="px-5 py-4 rounded-2xl font-bold text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-background-dark transition-all flex justify-between items-center" href="collections.html">Shop <span class="material-symbols-outlined text-sm opacity-20">chevron_right</span></a>
+                <a class="px-5 py-4 rounded-2xl font-bold bg-primary/10 text-primary flex justify-between items-center" href="blog.html">Blog <span class="material-symbols-outlined text-sm">check_circle</span></a>
+                <a class="px-5 py-4 rounded-2xl font-bold text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-background-dark transition-all flex justify-between items-center" href="about.html">About Us <span class="material-symbols-outlined text-sm opacity-20">chevron_right</span></a>
+            </nav>
+        </div>
+        <div id="menuOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[55] hidden md:hidden"></div>
+    </header>
+
+    <main class="flex-1 flex flex-col items-center py-10 lg:py-16 px-4 lg:px-20">
+        <div class="max-w-3xl w-full text-center mb-12">
+            <span class="text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4 block italic">Pusat Informasi</span>
+            <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Wawasan, Edukasi & <br><span class="text-primary">Berita Terkini</span></h2>
+            
+            <div class="mt-8 lg:mt-10 relative max-w-2xl mx-auto">
+                <div class="absolute left-6 top-1/2 -translate-y-1/2 text-text-muted-light">
+                    <span class="material-symbols-outlined text-[24px]">search</span>
+                </div>
+                <input id="blogSearchInput" class="w-full h-14 lg:h-16 pl-16 pr-8 rounded-full bg-white dark:bg-surface-dark border border-gray-100 lg:border-none shadow-xl shadow-gray-200/50 focus:ring-2 focus:ring-primary/30 text-sm transition-all outline-none" placeholder="Ketik judul artikel..." type="text"/>
+            </div>
+        </div>
+
+        <div class="w-full max-w-[1280px] flex overflow-x-auto hide-scrollbar gap-3 mb-12 lg:justify-center pb-2" id="blogFilterContainer">
+            <button data-filter="all" class="blog-filter-btn shrink-0 h-11 px-8 rounded-full bg-primary text-white text-xs font-bold shadow-lg transition-all whitespace-nowrap">Semua Topik</button>
+            <button data-filter="tips" class="blog-filter-btn shrink-0 h-11 px-8 rounded-full bg-white dark:bg-surface-dark border border-gray-100 text-xs font-medium hover:bg-gray-50 transition-all whitespace-nowrap">Edukasi & Tips</button>
+            <button data-filter="tren" class="blog-filter-btn shrink-0 h-11 px-8 rounded-full bg-white dark:bg-surface-dark border border-gray-100 text-xs font-medium hover:bg-gray-50 transition-all whitespace-nowrap">Tren Desain</button>
+            <button data-filter="kegiatan" class="blog-filter-btn shrink-0 h-11 px-8 rounded-full bg-white dark:bg-surface-dark border border-gray-100 text-xs font-medium hover:bg-gray-50 transition-all whitespace-nowrap">Kegiatan</button>
+            <button data-filter="pengumuman" class="blog-filter-btn shrink-0 h-11 px-8 rounded-full bg-white dark:bg-surface-dark border border-gray-100 text-xs font-medium hover:bg-gray-50 transition-all whitespace-nowrap">Pengumuman</button>
+        </div>
+
+        <div class="w-full max-w-[1280px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10" id="blogGrid">
+            
+            <article class="blog-card flex flex-col bg-white dark:bg-surface-dark rounded-[2.5rem] overflow-hidden border border-gray-50 dark:border-[#3e3428]" data-category="tren" data-title="warna interior paling populer 2025">
+                <div class="aspect-[16/10] relative overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600"></div>
+                <div class="p-8 flex flex-col flex-1 gap-4">
+                    <p class="text-[10px] font-bold text-text-muted-light uppercase tracking-widest">28 Des 2025</p>
+                    <h3 class="font-black text-xl leading-tight">Warna Interior Paling Populer di Tahun 2025</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed line-clamp-3">Temukan tren warna bumi dan palet hangat yang akan mengubah suasana rumah Anda di tahun mendatang.</p>
+                    <a href="article-1.html" class="mt-auto flex items-center justify-between border-t border-gray-50 dark:border-[#3e3428] pt-6 group/link">
+                        <span class="text-[11px] font-bold uppercase text-primary">Baca Selengkapnya</span>
+                        <span class="material-symbols-outlined text-primary text-[20px]">arrow_right_alt</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card flex flex-col bg-white dark:bg-surface-dark rounded-[2.5rem] overflow-hidden border border-gray-50 dark:border-[#3e3428]" data-category="tips" data-title="panduan lengkap merawat keramik handmade">
+                <div class="aspect-[16/10] relative overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600"></div>
+                <div class="p-8 flex flex-col flex-1 gap-4">
+                    <p class="text-[10px] font-bold text-text-muted-light uppercase tracking-widest">25 Des 2025</p>
+                    <h3 class="font-black text-xl leading-tight">Panduan Lengkap Merawat Keramik Handmade</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed line-clamp-3">Tips praktis membersihkan dan menjaga kualitas keramik buatan tangan agar tetap berkilau.</p>
+                    <a href="article-2.html" class="mt-auto flex items-center justify-between border-t border-gray-50 dark:border-[#3e3428] pt-6 group/link">
+                        <span class="text-[11px] font-bold uppercase text-primary">Baca Selengkapnya</span>
+                        <span class="material-symbols-outlined text-primary text-[20px]">arrow_right_alt</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card flex flex-col bg-white dark:bg-surface-dark rounded-[2.5rem] overflow-hidden border border-gray-50 dark:border-[#3e3428]" data-category="kegiatan" data-title="workshop dekorasi akhir tahun bersama ahli">
+                <div class="aspect-[16/10] relative overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?w=600"></div>
+                <div class="p-8 flex flex-col flex-1 gap-4">
+                    <p class="text-[10px] font-bold text-text-muted-light uppercase tracking-widest">20 Des 2025</p>
+                    <h3 class="font-black text-xl leading-tight text-text-main-light dark:text-text-main-dark">Workshop Dekorasi Akhir Tahun Bersama Ahli</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed line-clamp-3">Melihat kembali keseruan belajar menata ruang tamu bersama desainer interior terkemuka.</p>
+                    <a href="article-3.html" class="mt-auto flex items-center justify-between border-t border-gray-50 dark:border-[#3e3428] pt-6 group/link">
+                        <span class="text-[11px] font-bold uppercase text-primary">Baca Selengkapnya</span>
+                        <span class="material-symbols-outlined text-primary text-[20px]">arrow_right_alt</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card flex flex-col bg-white dark:bg-surface-dark rounded-[2.5rem] overflow-hidden border border-gray-50 dark:border-[#3e3428]" data-category="pengumuman" data-title="jadwal libur operasional logistik seasonal">
+                <div class="aspect-[16/10] relative overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1517705008128-361805f42e86?w=600"></div>
+                <div class="p-8 flex flex-col flex-1 gap-4">
+                    <p class="text-[10px] font-bold text-text-muted-light uppercase tracking-widest">18 Des 2025</p>
+                    <h3 class="font-black text-xl leading-tight">Jadwal Libur Operasional & Logistik Seasonal</h3>
+                    <p class="text-sm text-text-muted-light leading-relaxed line-clamp-3">Cek detail batas akhir pemesanan agar paket dekorasi Anda sampai sebelum libur panjang.</p>
+                    <a href="article-4.html" class="mt-auto flex items-center justify-between border-t border-gray-50 dark:border-[#3e3428] pt-6 group/link">
+                        <span class="text-[11px] font-bold uppercase text-primary">Baca Selengkapnya</span>
+                        <span class="material-symbols-outlined text-primary text-[20px]">arrow_right_alt</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card flex flex-col bg-white dark:bg-surface-dark rounded-[2.5rem] overflow-hidden border border-gray-50 dark:border-[#3e3428]" data-category="tips" data-title="cara memilih pencahayaan ruang tamu">
+                <div class="aspect-[16/10] relative overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600"></div>
+                <div class="p-8 flex flex-col flex-1 gap-4">
+                    <p class="text-[10px] font-bold text-text-muted-light uppercase tracking-widest">12 Des 2025</p>
+                    <h3 class="font-black text-xl leading-tight">Cara Memilih Pencahayaan Ruang Tamu</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed line-clamp-3">Teknik layering lights untuk menciptakan atmosfer yang hangat di area keluarga.</p>
+                    <a href="article-5.html" class="mt-auto flex items-center justify-between border-t border-gray-50 dark:border-[#3e3428] pt-6 group/link">
+                        <span class="text-[11px] font-bold uppercase text-primary">Baca Selengkapnya</span>
+                        <span class="material-symbols-outlined text-primary text-[20px]">arrow_right_alt</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card flex flex-col bg-white dark:bg-surface-dark rounded-[2.5rem] overflow-hidden border border-gray-50 dark:border-[#3e3428]" data-category="tren" data-title="evolusi desain skandinavia modern">
+                <div class="aspect-[16/10] relative overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1616489953149-7551745d33a3?w=600"></div>
+                <div class="p-8 flex flex-col flex-1 gap-4">
+                    <p class="text-[10px] font-bold text-text-muted-light uppercase tracking-widest">05 Des 2025</p>
+                    <h3 class="font-black text-xl leading-tight">Evolusi Desain Skandinavia Modern</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed line-clamp-3">Mengapa gaya minimalis dari Utara tetap menjadi favorit dunia dekorasi modern.</p>
+                    <a href="article-6.html" class="mt-auto flex items-center justify-between border-t border-gray-50 dark:border-[#3e3428] pt-6 group/link">
+                        <span class="text-[11px] font-bold uppercase text-primary">Baca Selengkapnya</span>
+                        <span class="material-symbols-outlined text-primary text-[20px]">arrow_right_alt</span>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-[#f4eee6] dark:border-[#3e3428] bg-white dark:bg-surface-dark py-12 px-6 lg:px-20 text-center md:text-left">
+        <div class="mx-auto max-w-[1280px] grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="flex flex-col gap-4">
+                <span class="font-bold text-lg text-primary">Seasonal Decor</span>
+                <p class="text-text-muted-light text-sm">Bringing warmth and style to your home.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Shop</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light">
+                    <li><a class="hover:text-primary" href="collections.html">Best Sellers</a></li>
+                    <li><a class="hover:text-primary" href="collections.html">Flash Sale</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Company</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light">
+                    <li><a class="hover:text-primary" href="about.html">Our Story</a></li>
+                    <li><a class="hover:text-primary" href="blog.html">Blog & News</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Newsletter</h4>
+                <div class="flex gap-2">
+                    <input class="w-full h-10 px-3 rounded-lg bg-gray-50 dark:bg-background-dark border-none text-sm outline-none" placeholder="Your email" type="email"/>
+                    <button class="h-10 w-10 flex items-center justify-center rounded-lg bg-primary text-white"><span class="material-symbols-outlined">arrow_forward</span></button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Menu Mobile Logic (SOLID BACKGROUND)
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('translate-x-full');
+        menuOverlay.classList.toggle('hidden');
+    }
+
+    menuBtn.onclick = toggleMenu;
+    closeMenu.onclick = toggleMenu;
+    menuOverlay.onclick = toggleMenu;
+
+    // Search & Filter Logic (HURUF PER HURUF)
+    const searchInput = document.getElementById('blogSearchInput');
+    const filterBtns = document.querySelectorAll('.blog-filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+
+    function updateBlogDisplay() {
+        const query = searchInput.value.toLowerCase().trim();
+        const activeFilter = document.querySelector('.blog-filter-btn.bg-primary').dataset.filter;
+
+        blogCards.forEach(card => {
+            const title = card.dataset.title.toLowerCase();
+            const category = card.dataset.category;
+            const isMatch = title.includes(query) && (activeFilter === 'all' || category === activeFilter);
+            card.classList.toggle('hidden', !isMatch);
+        });
+    }
+
+    searchInput.oninput = updateBlogDisplay;
+
+    filterBtns.forEach(btn => {
+        btn.onclick = () => {
+            filterBtns.forEach(b => {
+                b.classList.remove('bg-primary', 'text-white', 'shadow-lg');
+                b.classList.add('bg-white', 'dark:bg-surface-dark');
+            });
+            btn.classList.add('bg-primary', 'text-white', 'shadow-lg');
+            btn.classList.remove('bg-white', 'dark:bg-surface-dark');
+            updateBlogDisplay();
+        };
+    });
+</script>
+</body>
+</html>

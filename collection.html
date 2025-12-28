@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Collections - Seasonal Home Decor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#db7706",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#231a0f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2f2418",
+                        "text-main-light": "#1c150d",
+                        "text-main-dark": "#fcfaf8",
+                        "text-muted-light": "#9e7647",
+                        "text-muted-dark": "#d6c0a0",
+                    },
+                    fontFamily: { "display": ["Plus Jakarta Sans", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Floating Buttons Style */
+        .floating-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(20px); pointer-events: none; }
+        .floating-btn.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        #mobileMenu { transition: transform 0.3s ease-in-out; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <header class="sticky top-0 z-50 border-b border-[#f4eee6] dark:border-[#3e3428] bg-white dark:bg-background-dark md:bg-background-light/95 md:dark:bg-background-dark/95 md:backdrop-blur-md px-6 py-4 lg:px-20">
+        <div class="mx-auto flex max-w-[1280px] items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group active:scale-95 transition-all">
+                <div class="size-8 text-primary">
+                    <svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Seasonal Decor</h1>
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+                <a class="text-sm font-bold text-primary transition-colors" href="collections.html">Collections</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="about.html">About Us</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button class="flex size-10 items-center justify-center rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] hover:text-primary transition-all"><span class="material-symbols-outlined text-[20px]">search</span></button>
+                <button id="menuBtn" class="md:hidden flex size-10 items-center justify-center rounded-xl border border-gray-100 dark:border-[#3e3428] bg-gray-50 dark:bg-surface-dark transition-all">
+                    <span class="material-symbols-outlined text-[20px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="fixed inset-y-0 right-0 w-[80%] max-w-[300px] bg-white dark:bg-surface-dark z-[60] shadow-2xl translate-x-full md:hidden flex flex-col p-6 text-left">
+            <div class="flex items-center justify-between mb-8 border-b border-gray-100 dark:border-[#3e3428] pb-4">
+                <span class="font-bold text-primary uppercase text-xs tracking-widest">Menu</span>
+                <button id="closeMenu" class="p-2 text-text-muted-light"><span class="material-symbols-outlined text-xl">close</span></button>
+            </div>
+            <nav class="flex flex-col gap-6 font-bold">
+                <a class="text-lg" href="index.html">Home</a>
+                <a class="text-lg" href="#">Shop</a>
+                <a class="text-lg text-primary" href="collections.html">Collections</a>
+                <a class="text-lg" href="about.html">About Us</a>
+            </nav>
+        </div>
+        <div id="menuOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] hidden md:hidden"></div>
+    </header>
+
+    <main class="flex-1">
+        <section class="w-full px-4 pt-6 lg:px-20 max-w-[1400px] mx-auto">
+            <div class="relative w-full overflow-hidden rounded-3xl bg-surface-dark h-[350px] md:h-[450px]">
+                <img class="absolute inset-0 w-full h-full object-cover opacity-50" src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=1200" alt="Promo">
+                <div class="relative z-10 h-full flex flex-col justify-center px-8 md:px-20 max-w-2xl gap-4 text-left">
+                    <span class="bg-red-600 text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full w-fit uppercase tracking-widest">Year End Sale</span>
+                    <h2 class="text-white text-4xl md:text-6xl font-black leading-tight">Wujudkan Rumah Impian dengan Diskon hingga 40%</h2>
+                    <p class="text-gray-200 text-sm md:text-lg">Koleksi terbatas untuk pencahayaan dan keramik premium.</p>
+                    <a href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20Promo%20Year%20End%20Sale" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-xl font-bold w-fit shadow-lg shadow-primary/30 transition-all active:scale-95 text-center">Konsultasi via WA</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full bg-red-50 dark:bg-red-900/10 py-16 px-4 lg:px-20 mt-12 text-left">
+            <div class="max-w-[1280px] mx-auto">
+                <div class="flex items-end justify-between mb-8">
+                    <div>
+                        <h2 class="text-2xl font-black text-red-700">⚡ Flash Sale</h2>
+                        <p class="text-red-600/70 text-sm italic">Stok sangat terbatas, pesan sekarang!</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+                    <a href="https://wa.me/62895639068080?text=Saya%20mau%20order%20Promo%20Industrial%20Ceiling%20Light" target="_blank" class="group bg-white dark:bg-surface-dark rounded-2xl p-2 border border-red-100 hover:shadow-xl transition-all">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500">
+                            <span class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">Save 30%</span>
+                        </div>
+                        <div class="p-2">
+                            <h4 class="font-bold text-sm line-clamp-1 uppercase">Industrial Ceiling Light</h4>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-red-600 font-bold">$42</span>
+                                <span class="text-gray-400 text-xs line-through">$60</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/62895639068080?text=Saya%20mau%20order%20Promo%20Vintage%20Wood%20Tray" target="_blank" class="group bg-white dark:bg-surface-dark rounded-2xl p-2 border border-red-100 hover:shadow-xl transition-all">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?w=500">
+                            <span class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">Save 20%</span>
+                        </div>
+                        <div class="p-2">
+                            <h4 class="font-bold text-sm line-clamp-1 uppercase">Vintage Wood Tray</h4>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-red-600 font-bold">$18</span>
+                                <span class="text-gray-400 text-xs line-through">$24</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/62895639068080?text=Saya%20mau%20order%20Promo%20Scented%20Winter%20Candle" target="_blank" class="group bg-white dark:bg-surface-dark rounded-2xl p-2 border border-red-100 hover:shadow-xl transition-all">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=500">
+                            <span class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">Save 50%</span>
+                        </div>
+                        <div class="p-2">
+                            <h4 class="font-bold text-sm line-clamp-1 uppercase">Scented Winter Candle</h4>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-red-600 font-bold">$10</span>
+                                <span class="text-gray-400 text-xs line-through">$20</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/62895639068080?text=Saya%20mau%20order%20Promo%20Golden%20Ceramic%20Plate" target="_blank" class="group bg-white dark:bg-surface-dark rounded-2xl p-2 border border-red-100 hover:shadow-xl transition-all">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-3">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500">
+                            <span class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">Save 15%</span>
+                        </div>
+                        <div class="p-2">
+                            <h4 class="font-bold text-sm line-clamp-1 uppercase">Golden Ceramic Plate</h4>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-red-600 font-bold">$34</span>
+                                <span class="text-gray-400 text-xs line-through">$40</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 lg:px-20 py-16 max-w-[1280px] mx-auto text-left">
+            <h2 class="text-2xl font-black mb-8">🔥 Terlaris Minggu Ini</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+                <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover group-hover:scale-105 transition-all" src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm mb-1 uppercase">Golden Hour Lamp</h3>
+                        <p class="text-primary font-bold text-sm mb-4">$75.00</p>
+                        <a href="https://wa.me/62895639068080?text=Halo%20saya%20mau%20pesan%20Golden%20Hour%20Lamp" target="_blank" class="mt-auto h-10 flex items-center justify-center rounded-lg bg-primary text-white text-[10px] font-bold uppercase tracking-widest hover:bg-primary/90 transition-all">Pesan via WA</a>
+                    </div>
+                </div>
+                <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover group-hover:scale-105 transition-all" src="https://images.unsplash.com/photo-1594910413527-567ea46a77af?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm mb-1 uppercase">Wall Decor Mirror</h3>
+                        <p class="text-primary font-bold text-sm mb-4">$110.00</p>
+                        <a href="https://wa.me/62895639068080?text=Halo%20saya%20mau%20pesan%20Wall%20Decor%20Mirror" target="_blank" class="mt-auto h-10 flex items-center justify-center rounded-lg bg-primary text-white text-[10px] font-bold uppercase tracking-widest hover:bg-primary/90 transition-all">Pesan via WA</a>
+                    </div>
+                </div>
+                <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover group-hover:scale-105 transition-all" src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm mb-1 uppercase">Suede Lounge Pillow</h3>
+                        <p class="text-primary font-bold text-sm mb-4">$49.00</p>
+                        <a href="https://wa.me/62895639068080?text=Halo%20saya%20mau%20pesan%20Suede%20Lounge%20Pillow" target="_blank" class="mt-auto h-10 flex items-center justify-center rounded-lg bg-primary text-white text-[10px] font-bold uppercase tracking-widest hover:bg-primary/90 transition-all">Pesan via WA</a>
+                    </div>
+                </div>
+                <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover group-hover:scale-105 transition-all" src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm mb-1 uppercase">Nordic Vase Cream</h3>
+                        <p class="text-primary font-bold text-sm mb-4">$45.00</p>
+                        <a href="https://wa.me/62895639068080?text=Halo%20saya%20mau%20pesan%20Nordic%20Vase%20Cream" target="_blank" class="mt-auto h-10 flex items-center justify-center rounded-lg bg-primary text-white text-[10px] font-bold uppercase tracking-widest hover:bg-primary/90 transition-all">Pesan via WA</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 lg:px-20 py-16 max-w-[1280px] mx-auto border-t border-gray-100 dark:border-[#3e3428] text-left">
+            <h2 class="text-2xl font-black mb-8">Katalog Lengkap</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
+                <div class="flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-50 dark:border-[#3e3428] hover:shadow-lg transition-all">
+                    <div class="relative aspect-square overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?w=500"></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-[13px] mb-1 uppercase">Rattan Basket</h3>
+                        <p class="text-text-muted-light font-bold text-xs mb-3">$35.00</p>
+                        <a href="https://wa.me/62895639068080?text=Tanya%20Produk%20Rattan%20Basket" target="_blank" class="w-full h-8 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-surface-dark text-[10px] font-bold border border-gray-100 dark:border-[#3e3428] uppercase">Detail & Order</a>
+                    </div>
+                </div>
+                <div class="flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-50 dark:border-[#3e3428] hover:shadow-lg transition-all">
+                    <div class="relative aspect-square overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500"></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-[13px] mb-1 uppercase">Clay Dining Set</h3>
+                        <p class="text-text-muted-light font-bold text-xs mb-3">$120.00</p>
+                        <a href="https://wa.me/62895639068080?text=Tanya%20Produk%20Clay%20Dining%20Set" target="_blank" class="w-full h-8 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-surface-dark text-[10px] font-bold border border-gray-100 dark:border-[#3e3428] uppercase">Detail & Order</a>
+                    </div>
+                </div>
+                <div class="flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-50 dark:border-[#3e3428] hover:shadow-lg transition-all">
+                    <div class="relative aspect-square overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1517705008128-361805f42e86?w=500"></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-[13px] mb-1 uppercase">Rustic Lantern</h3>
+                        <p class="text-text-muted-light font-bold text-xs mb-3">$44.00</p>
+                        <a href="https://wa.me/62895639068080?text=Tanya%20Produk%20Rustic%20Lantern" target="_blank" class="w-full h-8 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-surface-dark text-[10px] font-bold border border-gray-100 dark:border-[#3e3428] uppercase">Detail & Order</a>
+                    </div>
+                </div>
+                <div class="flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-50 dark:border-[#3e3428] hover:shadow-lg transition-all">
+                    <div class="relative aspect-square overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500"></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-[13px] mb-1 uppercase">Beige Knit Throw</h3>
+                        <p class="text-text-muted-light font-bold text-xs mb-3">$55.00</p>
+                        <a href="https://wa.me/62895639068080?text=Tanya%20Produk%20Beige%20Knit%20Throw" target="_blank" class="w-full h-8 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-surface-dark text-[10px] font-bold border border-gray-100 dark:border-[#3e3428] uppercase">Detail & Order</a>
+                    </div>
+                </div>
+                <div class="flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-50 dark:border-[#3e3428] hover:shadow-lg transition-all">
+                    <div class="relative aspect-square overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1598048145816-435109890473?w=500"></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-[13px] mb-1 uppercase">Pampas Grass</h3>
+                        <p class="text-text-muted-light font-bold text-xs mb-3">$15.00</p>
+                        <a href="https://wa.me/62895639068080?text=Tanya%20Produk%20Pampas%20Grass" target="_blank" class="w-full h-8 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-surface-dark text-[10px] font-bold border border-gray-100 dark:border-[#3e3428] uppercase">Detail & Order</a>
+                    </div>
+                </div>
+                <div class="flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-50 dark:border-[#3e3428] hover:shadow-lg transition-all">
+                    <div class="relative aspect-square overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500"></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-[13px] mb-1 uppercase">Copper Lamp</h3>
+                        <p class="text-text-muted-light font-bold text-xs mb-3">$89.00</p>
+                        <a href="https://wa.me/62895639068080?text=Tanya%20Produk%20Copper%20Lamp" target="_blank" class="w-full h-8 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-surface-dark text-[10px] font-bold border border-gray-100 dark:border-[#3e3428] uppercase">Detail & Order</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[100]">
+        <a href="https://wa.me/62895639068080?text=Halo%20Seasonal%20Decor" target="_blank" class="flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+            <svg class="size-7" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48 2.244 2.244 3.481 5.229 3.481 8.404 0 6.556-5.332 11.888-11.888 11.888-2.003 0-3.963-.505-5.698-1.465l-6.386 1.69zm6.305-3.645c1.558.925 3.31 1.414 5.101 1.414 5.421 0 9.833-4.412 9.833-9.833 0-2.627-1.023-5.097-2.881-6.955-1.857-1.857-4.327-2.881-6.955-2.881-5.421 0-9.833 4.412-9.833 9.833 0 1.905.551 3.759 1.593 5.356l-1.045 3.821 3.922-1.041z"/></svg>
+        </a>
+        <button id="backToTop" class="floating-btn flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-3xl">expand_less</span>
+        </button>
+    </div>
+
+    <footer class="border-t border-[#f4eee6] dark:border-[#3e3428] bg-surface-light dark:bg-surface-dark py-12 px-6 lg:px-20 text-left">
+        <div class="mx-auto max-w-[1280px] grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-2 text-primary justify-center md:justify-start">
+                    <span class="font-bold text-lg text-text-main-light dark:text-text-main-dark uppercase">Seasonal Decor</span>
+                </div>
+                <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Bringing warmth and style to your home, one season at a time.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-text-main-light dark:text-text-main-dark mb-4 uppercase text-xs tracking-widest">Shop</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                    <li><a class="hover:text-primary" href="#">New Arrivals</a></li>
+                    <li><a class="hover:text-primary" href="#">Best Sellers</a></li>
+                    <li><a class="hover:text-primary" href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-text-main-light dark:text-text-main-dark mb-4 uppercase text-xs tracking-widest">Support</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                    <li><a class="hover:text-primary" href="#">FAQ</a></li>
+                    <li><a class="hover:text-primary" href="#">Shipping & Returns</a></li>
+                    <li><a class="hover:text-primary" href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-text-main-light dark:text-text-main-dark mb-4 uppercase text-xs tracking-widest">Stay Connected</h4>
+                <div class="flex gap-2">
+                    <input class="w-full h-10 px-3 rounded-lg bg-background-light dark:bg-background-dark border-none text-sm outline-none focus:ring-1 focus:ring-primary" placeholder="Email address" type="email"/>
+                    <button class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-all">
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-[1280px] mt-12 pt-8 border-t border-dashed border-[#f4eee6] dark:border-[#3e3428] text-center text-xs text-text-muted-light dark:text-text-muted-dark">
+            © 2023 Seasonal Decor. All rights reserved.
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Navigation Toggle Logic
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('translate-x-full');
+        menuOverlay.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    if(menuBtn) menuBtn.onclick = toggleMenu;
+    if(closeMenu) closeMenu.onclick = toggleMenu;
+    if(menuOverlay) menuOverlay.onclick = toggleMenu;
+
+    // Floating Button & Back to Top Logic
+    const backToTopBtn = document.getElementById('backToTop');
+    window.onscroll = () => {
+        if (window.scrollY > 400) backToTopBtn.classList.add('show');
+        else backToTopBtn.classList.remove('show');
+    };
+    backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
+</body>
+</html>

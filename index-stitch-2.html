@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Seasonal Home Decor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#db7706",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#231a0f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2f2418",
+                        "text-main-light": "#1c150d",
+                        "text-main-dark": "#fcfaf8",
+                        "text-muted-light": "#9e7647",
+                        "text-muted-dark": "#d6c0a0",
+                    },
+                    fontFamily: { "display": ["Plus Jakarta Sans", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .product-card.hidden { display: none !important; }
+        #mobileMenu { transition: transform 0.3s ease-in-out; }
+        .floating-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(20px); pointer-events: none; }
+        .floating-btn.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        html { scroll-behavior: smooth; }
+
+        @media (max-width: 768px) {
+            .mobile-slider {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                gap: 16px;
+                padding-bottom: 20px;
+            }
+            .mobile-slider > a {
+                min-width: 85%;
+                scroll-snap-align: center;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <header class="sticky top-0 z-50 border-b border-[#f4eee6] dark:border-[#3e3428] bg-white dark:bg-background-dark md:bg-background-light/95 md:dark:bg-background-dark/95 md:backdrop-blur-md px-6 py-4 lg:px-20">
+        <div class="mx-auto flex max-w-[1280px] items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group active:scale-95 transition-all">
+                <div class="size-8 text-primary">
+                    <svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Seasonal Decor</h1>
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Collections</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="#">About Us</a>
+            </nav>
+            <div class="flex items-center gap-3 relative">
+                <div id="headerSearchWrapper" class="absolute right-full mr-4 hidden md:flex items-center">
+                    <input id="headerSearchInput" type="text" placeholder="Search..." class="h-9 w-48 lg:w-64 rounded-lg border-gray-200 dark:bg-surface-dark dark:border-[#3e3428] text-xs focus:ring-primary focus:border-primary transition-all">
+                </div>
+                <button id="headerSearchBtn" class="flex size-10 items-center justify-center rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] hover:text-primary transition-all">
+                    <span class="material-symbols-outlined text-[20px]">search</span>
+                </button>
+                <button id="menuBtn" class="md:hidden flex size-10 items-center justify-center rounded-xl border border-gray-100 dark:border-[#3e3428] bg-gray-50 dark:bg-surface-dark">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="fixed inset-y-0 right-0 w-[80%] max-w-[300px] bg-white dark:bg-surface-dark z-[60] shadow-2xl translate-x-full md:hidden flex flex-col p-6">
+            <div class="flex items-center justify-between mb-8 border-b border-gray-100 dark:border-[#3e3428] pb-4">
+                <span class="font-bold text-primary uppercase text-xs tracking-widest">Menu</span>
+                <button id="closeMenu" class="p-2"><span class="material-symbols-outlined text-xl">close</span></button>
+            </div>
+            <nav class="flex flex-col gap-6 font-bold">
+                <a class="text-lg text-primary" href="index.html">Home</a>
+                <a class="text-lg" href="#">Shop</a>
+                <a class="text-lg" href="#">Collections</a>
+                <a class="text-lg" href="#">About Us</a>
+            </nav>
+        </div>
+        <div id="menuOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] hidden md:hidden"></div>
+    </header>
+
+    <main class="flex-1 flex flex-col items-center">
+        <section class="w-full px-4 pt-6 pb-2 lg:px-20 max-w-[1400px]">
+            <div class="relative w-full overflow-hidden rounded-2xl bg-cover bg-center min-h-[500px] flex flex-col items-center justify-center text-center p-8 lg:p-16" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1540638349517-3abd5afc5847?auto=format&fit=crop&q=80&w=1200');">
+                <div class="max-w-2xl flex flex-col gap-6">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-bold tracking-wide uppercase self-center border border-white/30">New Collection</span>
+                    <h1 class="text-white text-4xl md:text-7xl font-black leading-tight drop-shadow-lg">Embrace the Warmth of the Season</h1>
+                    <div class="pt-4">
+                        <button class="inline-flex h-12 items-center justify-center rounded-xl bg-primary hover:bg-primary/90 text-white px-8 text-base font-bold shadow-lg transition-all active:scale-95">Shop New Arrivals</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shopSection" class="w-full px-4 lg:px-20 py-8 max-w-[1280px]">
+            <div class="flex flex-col lg:flex-row gap-6 items-center justify-between">
+                <div class="w-full lg:max-w-xs relative group">
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted-light group-focus-within:text-primary">
+                        <span class="material-symbols-outlined text-[20px]">search</span>
+                    </div>
+                    <input id="searchInput" class="w-full h-11 pl-11 pr-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-200 dark:border-[#3e3428] text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Search decor..." type="text"/>
+                </div>
+                <div class="w-full lg:w-auto flex overflow-x-auto hide-scrollbar gap-2 pb-2 lg:pb-0" id="filterContainer">
+                    <button data-filter="all" class="filter-btn shrink-0 h-10 px-6 rounded-xl bg-primary text-white text-sm font-bold shadow-md shadow-primary/20 transition-all">All</button>
+                    <button data-filter="autumn" class="filter-btn shrink-0 h-10 px-6 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] text-sm font-medium hover:bg-gray-50 transition-all">Autumn</button>
+                    <button data-filter="lighting" class="filter-btn shrink-0 h-10 px-6 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] text-sm font-medium hover:bg-gray-50 transition-all">Lighting</button>
+                    <button data-filter="ceramics" class="filter-btn shrink-0 h-10 px-6 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] text-sm font-medium hover:bg-gray-50 transition-all">Ceramics</button>
+                    <button data-filter="winter" class="filter-btn shrink-0 h-10 px-6 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] text-sm font-medium hover:bg-gray-50 transition-all">Winter</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 lg:px-20 pb-12 max-w-[1280px]">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold tracking-tight">Trending Now</h2>
+                <a class="text-primary font-bold text-sm hover:underline decoration-2" href="#">View All</a>
+            </div>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8" id="productGrid">
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="autumn" data-name="nordic ceramic vase">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Nordic Vase</h3>
+                        <span class="font-bold text-primary mb-3">$45</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Nordic%20Vase" target="_blank">WA</a>
+                    </div>
+                </div>
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="lighting" data-name="warm bedside lamp">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Warm Lamp</h3>
+                        <span class="font-bold text-primary mb-3">$62</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Warm%20Lamp" target="_blank">WA</a>
+                    </div>
+                </div>
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="autumn" data-name="velvet pumpkin set">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1509456592764-da906780070b?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Pumpkin Set</h3>
+                        <span class="font-bold text-primary mb-3">$28</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Pumpkin%20Set" target="_blank">WA</a>
+                    </div>
+                </div>
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="winter" data-name="chunky knit throw">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Knit Throw</h3>
+                        <span class="font-bold text-primary mb-3">$55</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Knit%20Throw" target="_blank">WA</a>
+                    </div>
+                </div>
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="ceramics" data-name="clay bowl set">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Clay Bowl</h3>
+                        <span class="font-bold text-primary mb-3">$32</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Clay%20Bowl" target="_blank">WA</a>
+                    </div>
+                </div>
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="lighting" data-name="rustic wood lantern">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1517705008128-361805f42e86?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Wood Lantern</h3>
+                        <span class="font-bold text-primary mb-3">$34</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Wood%20Lantern" target="_blank">WA</a>
+                    </div>
+                </div>
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="autumn" data-name="pampas grass decor">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1598048145816-435109890473?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Pampas Grass</h3>
+                        <span class="font-bold text-primary mb-3">$18</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Pampas%20Grass" target="_blank">WA</a>
+                    </div>
+                </div>
+                <div class="product-card flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-[#3e3428]" data-category="winter" data-name="pine scented candle">
+                    <div class="relative aspect-[4/5] overflow-hidden"><img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=500"></div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <h3 class="font-bold text-sm md:text-base mb-1">Pine Candle</h3>
+                        <span class="font-bold text-primary mb-3">$12</span>
+                        <a class="mt-auto flex items-center justify-center gap-2 h-10 rounded-lg bg-primary/10 text-primary text-xs font-bold" href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Pine%20Candle" target="_blank">WA</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full bg-[#fdfaf5] dark:bg-surface-dark/30 py-16 px-4 lg:px-20 border-y border-gray-100 dark:border-[#3e3428]">
+            <div class="mx-auto max-w-[1280px]">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-black tracking-tight mb-3">Editor's Choice</h2>
+                    <p class="text-text-muted-light text-sm">Hand-picked premium pieces for your dream home.</p>
+                </div>
+
+                <div class="mobile-slider md:grid md:grid-cols-3 md:gap-8">
+                    <a href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Modern%20Minimalist%20Mirror" target="_blank" class="block bg-white dark:bg-surface-dark rounded-3xl p-6 border border-gray-100 dark:border-[#3e3428] shadow-sm hover:shadow-xl transition-all group">
+                        <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-50">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600">
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Modern Minimalist Mirror</h4>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-primary">$120</span>
+                            <div class="h-10 w-10 rounded-full bg-text-main-light text-white dark:bg-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[20px]">chat</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Aromatic%20Candle%20Tray" target="_blank" class="block bg-white dark:bg-surface-dark rounded-3xl p-6 border border-gray-100 dark:border-[#3e3428] shadow-sm hover:shadow-xl transition-all group">
+                        <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-50">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?w=600">
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Aromatic Candle Tray</h4>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-primary">$85</span>
+                            <div class="h-10 w-10 rounded-full bg-text-main-light text-white dark:bg-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[20px]">chat</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/62895639068080?text=Halo,%20saya%20tertarik%20dengan%20produk%20Suede%20Lounge%20Pillow" target="_blank" class="block bg-white dark:bg-surface-dark rounded-3xl p-6 border border-gray-100 dark:border-[#3e3428] shadow-sm hover:shadow-xl transition-all group">
+                        <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-50">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=600">
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Suede Lounge Pillow</h4>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-primary">$49</span>
+                            <div class="h-10 w-10 rounded-full bg-text-main-light text-white dark:bg-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[20px]">chat</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[100]">
+        <a href="https://wa.me/62895639068080?text=Halo%20Seasonal%20Decor" target="_blank" class="flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 transition-all">
+            <svg class="size-7" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48 2.244 2.244 3.481 5.229 3.481 8.404 0 6.556-5.332 11.888-11.888 11.888-2.003 0-3.963-.505-5.698-1.465l-6.386 1.69zm6.305-3.645c1.558.925 3.31 1.414 5.101 1.414 5.421 0 9.833-4.412 9.833-9.833 0-2.627-1.023-5.097-2.881-6.955-1.857-1.857-4.327-2.881-6.955-2.881-5.421 0-9.833 4.412-9.833 9.833 0 1.905.551 3.759 1.593 5.356l-1.045 3.821 3.922-1.041z"/></svg>
+        </a>
+        <button id="backToTop" class="floating-btn flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-3xl">expand_less</span>
+        </button>
+    </div>
+
+    <footer class="border-t border-[#f4eee6] dark:border-[#3e3428] bg-surface-light dark:bg-surface-dark py-12 px-6 lg:px-20">
+        <div class="mx-auto max-w-[1280px] grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="flex flex-col gap-4">
+                <span class="font-bold text-lg text-primary">Seasonal Decor</span>
+                <p class="text-text-muted-light text-sm">Bringing warmth and style to your home.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Shop</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light">
+                    <li><a class="hover:text-primary" href="#">New Arrivals</a></li>
+                    <li><a class="hover:text-primary" href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Support</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light">
+                    <li><a class="hover:text-primary" href="#">FAQ</a></li>
+                    <li><a class="hover:text-primary" href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-sm uppercase tracking-widest text-center md:text-left">Newsletter</h4>
+                <div class="flex gap-2">
+                    <input class="w-full h-10 px-3 rounded-lg bg-gray-50 dark:bg-background-dark border-none text-sm" placeholder="Your email" type="email"/>
+                    <button class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-primary text-white"><span class="material-symbols-outlined">arrow_forward</span></button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Logic Navigasi & Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('translate-x-full');
+        menuOverlay.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    if(menuBtn) menuBtn.onclick = toggleMenu;
+    if(closeMenu) closeMenu.onclick = toggleMenu;
+    if(menuOverlay) menuOverlay.onclick = toggleMenu;
+
+    // Logic Search & Filter
+    const headerSearchBtn = document.getElementById('headerSearchBtn');
+    const headerSearchWrapper = document.getElementById('headerSearchWrapper');
+    const headerSearchInput = document.getElementById('headerSearchInput');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    const searchInput = document.getElementById('searchInput');
+
+    headerSearchBtn.addEventListener('click', () => {
+        headerSearchWrapper.classList.toggle('hidden');
+        if (!headerSearchWrapper.classList.contains('hidden')) {
+            headerSearchInput.focus();
+        }
+    });
+
+    function applyFilters(query) {
+        const activeFilter = document.querySelector('.filter-btn.bg-primary').dataset.filter;
+        const lowerQuery = query.toLowerCase();
+        searchInput.value = query;
+        headerSearchInput.value = query;
+
+        productCards.forEach(card => {
+            const category = card.dataset.category;
+            const name = card.dataset.name.toLowerCase();
+            const isCategoryMatch = (activeFilter === 'all' || category === activeFilter);
+            const isSearchMatch = name.includes(lowerQuery);
+            if (isCategoryMatch && isSearchMatch) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    }
+
+    headerSearchInput.addEventListener('input', (e) => {
+        applyFilters(e.target.value);
+        document.getElementById('shopSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    searchInput.addEventListener('input', (e) => applyFilters(e.target.value));
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => {
+                b.classList.remove('bg-primary', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'dark:bg-surface-dark');
+            });
+            btn.classList.add('bg-primary', 'text-white', 'shadow-md');
+            btn.classList.remove('bg-white', 'dark:bg-surface-dark');
+            applyFilters(searchInput.value);
+        });
+    });
+
+    // Logic Floating Buttons
+    const backToTopBtn = document.getElementById('backToTop');
+    window.onscroll = () => {
+        if (window.scrollY > 400) backToTopBtn.classList.add('show');
+        else backToTopBtn.classList.remove('show');
+    };
+    backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
+</body>
+</html>

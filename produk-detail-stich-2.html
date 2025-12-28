@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Product Detail - Seasonal Home Decor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#db7706",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#231a0f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2f2418",
+                        "text-main-light": "#1c150d",
+                        "text-main-dark": "#fcfaf8",
+                        "text-muted-light": "#9e7647",
+                        "text-muted-dark": "#d6c0a0",
+                    },
+                    fontFamily: { "display": ["Plus Jakarta Sans", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <header class="sticky top-0 z-50 border-b border-[#f4eee6] dark:border-[#3e3428] bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-6 py-4 lg:px-20">
+        <div class="mx-auto flex max-w-[1280px] items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="size-8 text-primary">
+                    <svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight">Seasonal Decor</h1>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Collections</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="about.html">About Us</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button class="flex size-10 items-center justify-center rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428]"><span class="material-symbols-outlined text-[20px]">search</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        <section class="w-full px-4 py-8 lg:px-20 max-w-[1280px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <div class="flex flex-col gap-4">
+                    <div class="relative aspect-square overflow-hidden rounded-3xl border border-gray-100 dark:border-[#3e3428] bg-white">
+                        <img id="mainImage" class="h-full w-full object-cover transition-all duration-500" src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=1000" alt="Nordic Ceramic Vase Main">
+                    </div>
+                    <div class="grid grid-cols-4 gap-4" id="thumbGallery">
+                        <button class="thumb-btn aspect-square rounded-xl overflow-hidden border-2 border-primary">
+                            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=600">
+                        </button>
+                        <button class="thumb-btn aspect-square rounded-xl overflow-hidden border border-gray-100 opacity-70 hover:opacity-100 transition-all">
+                            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1612196808214-b7e239e5f6b7?w=600">
+                        </button>
+                        <button class="thumb-btn aspect-square rounded-xl overflow-hidden border border-gray-100 opacity-70 hover:opacity-100 transition-all">
+                            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600">
+                        </button>
+                        <button class="thumb-btn aspect-square rounded-xl overflow-hidden border border-gray-100 opacity-70 hover:opacity-100 transition-all">
+                            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1590735204550-51253e2f4bb8?w=600">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <nav class="flex text-xs font-medium text-text-muted-light mb-4 uppercase tracking-widest gap-2">
+                        <a href="index.html" class="hover:text-primary">Shop</a> <span>/</span> <a href="#" class="hover:text-primary">Ceramics</a>
+                    </nav>
+                    
+                    <h1 class="text-3xl md:text-5xl font-black mb-4">Nordic Ceramic Vase</h1>
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-3xl font-black text-primary">$45.00</span>
+                        <span class="px-2 py-1 rounded-md bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider italic">Tersedia</span>
+                    </div>
+
+                    <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed mb-8">
+                        Sentuhan minimalis untuk rumah Anda. Vas keramik bergaya Nordic ini dibuat dengan tangan menggunakan tanah liat pilihan, menghasilkan tekstur matte yang elegan untuk mempercantik setiap sudut ruangan Anda.
+                    </p>
+
+                    <div class="border-t border-gray-100 dark:border-[#3e3428] pt-6 mb-8">
+                        <h3 class="font-bold mb-4">Spesifikasi Singkat</h3>
+                        <div class="grid grid-cols-2 gap-y-3 text-sm">
+                            <span class="text-text-muted-light">Bahan</span> <span class="font-medium">Premium Ceramic</span>
+                            <span class="text-text-muted-light">Dimensi</span> <span class="font-medium">20cm x 12cm</span>
+                            <span class="text-text-muted-light">Finishing</span> <span class="font-medium">Matte Sand</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/62895639068080?text=Halo%20Seasonal%20Decor,%20saya%20ingin%20memesan%20Nordic%20Ceramic%20Vase" target="_blank" class="flex-1 inline-flex h-14 items-center justify-center rounded-2xl bg-primary text-white text-lg font-bold shadow-xl shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95 gap-3">
+                            <span class="material-symbols-outlined">chat</span> Pesan via WhatsApp
+                        </a>
+                        <button class="size-14 inline-flex items-center justify-center rounded-2xl bg-white dark:bg-surface-dark border border-gray-200 dark:border-[#3e3428] text-primary hover:bg-gray-50 transition-all">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 lg:px-20 py-12 max-w-[1280px] mx-auto">
+            <div class="border-b border-gray-100 dark:border-[#3e3428] mb-8 flex gap-8 overflow-x-auto hide-scrollbar">
+                <button data-tab="description" class="tab-btn pb-4 border-b-2 border-primary font-bold text-sm transition-all whitespace-nowrap">Description</button>
+                <button data-tab="shipping" class="tab-btn pb-4 border-b-2 border-transparent text-text-muted-light font-medium text-sm transition-all whitespace-nowrap">Shipping Info</button>
+                <button data-tab="reviews" class="tab-btn pb-4 border-b-2 border-transparent text-text-muted-light font-medium text-sm transition-all whitespace-nowrap">Reviews (12)</button>
+            </div>
+            
+            <div id="tabContainer">
+                <div id="description" class="tab-content active prose prose-sm dark:prose-invert max-w-none">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3">Keindahan dalam Kesederhanaan</h4>
+                            <p class="text-text-muted-light leading-relaxed mb-4">
+                                Nordic Ceramic Vase kami dirancang untuk menghadirkan ketenangan visual ke dalam ruang hidup Anda. Terinspirasi oleh estetika Skandinavia yang mengutamakan fungsi dan bentuk alami, vas ini memiliki tekstur matte halus yang tidak hanya memanjakan mata tetapi juga nyaman saat disentuh.
+                            </p>
+                        </div>
+                        <div class="bg-[#fdfaf5] dark:bg-surface-dark/50 p-6 rounded-2xl">
+                            <h4 class="text-lg font-bold mb-3 text-primary">Highlight Produk</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-text-muted-light"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span><span>Handcrafted by artisans.</span></li>
+                                <li class="flex items-start gap-3 text-text-muted-light"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span><span>Anti-slip protection base.</span></li>
+                                <li class="flex items-start gap-3 text-text-muted-light"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span><span>Waterproof and high durability.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="shipping" class="tab-content">
+                    <div class="max-w-3xl space-y-6">
+                        <h4 class="font-bold mb-4">Layanan Pengiriman</h4>
+                        <p class="text-sm text-text-muted-light">Kami memastikan barang Anda sampai dengan selamat. Setiap pesanan keramik dikemas dengan <strong>3 lapis Bubble Wrap</strong>, pelindung sudut kayu (opsional), dan kardus double-wall.</p>
+                        <p class="text-sm text-text-muted-light"><strong>Estimasi:</strong> Jabodetabek 1-2 hari, Luar Pulau 3-5 hari.</p>
+                    </div>
+                </div>
+
+                <div id="reviews" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-6 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428]">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-bold">Sarah Wijaya</span>
+                                <div class="flex text-primary text-[14px]"><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span></div>
+                            </div>
+                            <p class="text-sm text-text-muted-light leading-relaxed">"Gila sih, packingnya aman banget! Vasnya bener-bener matte dan elegan. Recomended!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-[#f4eee6] dark:border-[#3e3428] bg-surface-light dark:bg-surface-dark py-12 px-6 lg:px-20">
+        <div class="mx-auto max-w-[1280px] grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-2 text-primary justify-center md:justify-start">
+                    <span class="font-bold text-lg text-text-main-light dark:text-text-main-dark">Seasonal Decor</span>
+                </div>
+                <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Bringing warmth and style to your home, one season at a time.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-text-main-light dark:text-text-main-dark mb-4">Shop</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                    <li><a class="hover:text-primary" href="#">New Arrivals</a></li>
+                    <li><a class="hover:text-primary" href="#">Best Sellers</a></li>
+                    <li><a class="hover:text-primary" href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-text-main-light dark:text-text-main-dark mb-4">Support</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                    <li><a class="hover:text-primary" href="#">FAQ</a></li>
+                    <li><a class="hover:text-primary" href="#">Shipping & Returns</a></li>
+                    <li><a class="hover:text-primary" href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-text-main-light dark:text-text-main-dark mb-4">Newsletter</h4>
+                <div class="flex gap-2">
+                    <input class="w-full h-10 px-3 rounded-lg bg-background-light dark:bg-background-dark border-none text-sm outline-none" placeholder="Email address" type="email"/>
+                    <button class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-all">
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-[1280px] mt-12 pt-8 border-t border-dashed border-[#f4eee6] dark:border-[#3e3428] text-center text-xs text-text-muted-light dark:text-text-muted-dark">
+            © 2023 Seasonal Decor. All rights reserved.
+        </div>
+    </footer>
+</div>
+
+<script>
+    // 1. Galeri Gambar
+    const mainImg = document.getElementById('mainImage');
+    const thumbBtns = document.querySelectorAll('.thumb-btn');
+
+    thumbBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            mainImg.src = this.querySelector('img').src;
+            thumbBtns.forEach(b => {
+                b.classList.remove('border-primary', 'border-2');
+                b.classList.add('border-gray-100', 'border', 'opacity-70');
+            });
+            this.classList.add('border-primary', 'border-2');
+            this.classList.remove('border-gray-100', 'border', 'opacity-70');
+        });
+    });
+
+    // 2. Kontrol Tabs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetTab = this.dataset.tab;
+            tabBtns.forEach(b => {
+                b.classList.remove('border-primary', 'font-bold');
+                b.classList.add('border-transparent', 'text-text-muted-light', 'font-medium');
+            });
+            tabContents.forEach(content => content.classList.remove('active'));
+            this.classList.add('border-primary', 'font-bold');
+            this.classList.remove('border-transparent', 'text-text-muted-light', 'font-medium');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>

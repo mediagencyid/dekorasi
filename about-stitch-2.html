@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Us - Seasonal Home Decor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#db7706",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#231a0f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2f2418",
+                        "text-main-light": "#1c150d",
+                        "text-main-dark": "#fcfaf8",
+                        "text-muted-light": "#9e7647",
+                        "text-muted-dark": "#d6c0a0",
+                    },
+                    fontFamily: { "display": ["Plus Jakarta Sans", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        #mobileMenu { transition: transform 0.3s ease-in-out; }
+        .floating-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(20px); pointer-events: none; }
+        .floating-btn.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <header class="sticky top-0 z-50 border-b border-[#f4eee6] dark:border-[#3e3428] bg-white dark:bg-background-dark md:bg-background-light/95 md:dark:bg-background-dark/95 md:backdrop-blur-md px-6 py-4 lg:px-20">
+        <div class="mx-auto flex max-w-[1280px] items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group active:scale-95 transition-all">
+                <div class="size-8 text-primary">
+                    <svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Seasonal Decor</h1>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a class="text-sm hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-sm hover:text-primary transition-colors" href="#">Shop</a>
+                <a class="text-sm hover:text-primary transition-colors" href="#">Collections</a>
+                <a class="text-sm font-bold text-primary" href="#">About Us</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="flex size-10 items-center justify-center rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-[#3e3428] hover:text-primary"><span class="material-symbols-outlined text-[20px]">search</span></button>
+                <button id="menuBtn" class="md:hidden flex size-10 items-center justify-center rounded-xl border border-gray-100 dark:border-[#3e3428] bg-gray-50 dark:bg-surface-dark">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="fixed inset-y-0 right-0 w-[80%] max-w-[300px] bg-white dark:bg-surface-dark z-[60] shadow-2xl translate-x-full md:hidden flex flex-col p-6">
+            <div class="flex items-center justify-between mb-8 border-b border-gray-100 dark:border-[#3e3428] pb-4">
+                <span class="font-bold text-primary uppercase text-xs tracking-widest">Menu Navigasi</span>
+                <button id="closeMenu" class="p-2"><span class="material-symbols-outlined text-xl">close</span></button>
+            </div>
+            <nav class="flex flex-col gap-6 font-bold">
+                <a class="text-lg" href="index.html">Home</a>
+                <a class="text-lg" href="#">Shop</a>
+                <a class="text-lg" href="#">Collections</a>
+                <a class="text-lg text-primary" href="#">About Us</a>
+            </nav>
+        </div>
+        <div id="menuOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] hidden md:hidden"></div>
+    </header>
+
+    <main class="flex-1">
+        <section class="w-full px-4 pt-6 pb-12 lg:px-20 max-w-[1400px] mx-auto">
+            <div class="relative w-full overflow-hidden rounded-3xl bg-cover bg-center min-h-[300px] md:min-h-[450px] flex flex-col items-center justify-center text-center p-8 lg:p-16" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=1200');">
+                <div class="max-w-2xl flex flex-col gap-4">
+                    <h1 class="text-white text-4xl md:text-6xl font-black leading-tight drop-shadow-lg">Our Story</h1>
+                    <p class="text-gray-100 text-lg md:text-xl font-medium drop-shadow-md italic">"Every home has a season, every season has a story."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 lg:px-20 py-12 max-w-[1280px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-3xl md:text-4xl font-black mb-6 leading-tight">Mewujudkan Estetika dalam Kehangatan</h2>
+                    <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed mb-6">
+                        Berawal dari sebuah bengkel kerajinan kecil di tahun 2023, <strong>Seasonal Decor</strong> tumbuh dengan visi untuk membawa harmoni alam ke dalam rumah modern. Kami percaya bahwa dekorasi bukan sekadar pengisi ruang, melainkan cerminan dari perasaan dan kenyamanan.
+                    </p>
+                    <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                        Kami mengkurasi setiap produk mulai dari vas keramik buatan tangan hingga pencahayaan yang hangat, memastikan setiap musim yang Anda lalui di rumah terasa lebih bermakna dan indah.
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <img class="rounded-3xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/5]" src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?w=600" alt="Home Atmosphere">
+                    <div class="absolute -bottom-6 -right-6 bg-primary text-white p-6 rounded-2xl shadow-xl hidden lg:block">
+                        <span class="text-3xl font-black block">Premium</span>
+                        <span class="text-xs uppercase tracking-widest font-bold">Curated Quality</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full bg-[#fdfaf5] dark:bg-surface-dark/30 py-20 px-4 lg:px-20">
+            <div class="max-w-[1280px] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                            <span class="material-symbols-outlined text-4xl">inventory_2</span>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">Produk Terkurasi</h4>
+                        <p class="text-text-muted-light text-sm leading-relaxed">Kami hanya memilih produk dengan estetika terbaik untuk memastikan rumah Anda tampil elegan.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                            <span class="material-symbols-outlined text-4xl">verified_user</span>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">Kepercayaan Pelanggan</h4>
+                        <p class="text-text-muted-light text-sm leading-relaxed">Kepuasan Anda adalah prioritas kami, dengan layanan purna jual yang responsif melalui WA.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                            <span class="material-symbols-outlined text-4xl">package_2</span>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">Pengemasan Estetik</h4>
+                        <p class="text-text-muted-light text-sm leading-relaxed">Setiap pesanan dikemas dengan cantik dan aman, cocok untuk kado bagi orang spesial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 lg:px-20 py-24 max-w-[1280px] mx-auto text-center">
+            <h3 class="text-3xl md:text-5xl font-black mb-6">Let's decorate together</h3>
+            <p class="text-text-muted-light mb-10 max-w-lg mx-auto italic">Hubungi kami untuk mendapatkan rekomendasi produk yang paling cocok dengan gaya rumah Anda.</p>
+            <a href="https://wa.me/62895639068080?text=Halo%20Seasonal%20Decor" target="_blank" class="inline-flex h-12 items-center justify-center rounded-xl bg-primary text-white px-10 text-base font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95">
+                <span class="material-symbols-outlined mr-2">chat</span> Hubungi via WhatsApp
+            </a>
+        </section>
+    </main>
+
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[100]">
+        <a href="https://wa.me/62895639068080?text=Halo%20Seasonal%20Decor" target="_blank" class="flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+            <svg class="size-7" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48 2.244 2.244 3.481 5.229 3.481 8.404 0 6.556-5.332 11.888-11.888 11.888-2.003 0-3.963-.505-5.698-1.465l-6.386 1.69zm6.305-3.645c1.558.925 3.31 1.414 5.101 1.414 5.421 0 9.833-4.412 9.833-9.833 0-2.627-1.023-5.097-2.881-6.955-1.857-1.857-4.327-2.881-6.955-2.881-5.421 0-9.833 4.412-9.833 9.833 0 1.905.551 3.759 1.593 5.356l-1.045 3.821 3.922-1.041z"/></svg>
+        </a>
+        <button id="backToTop" class="floating-btn flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-3xl">expand_less</span>
+        </button>
+    </div>
+
+    <footer class="border-t border-[#f4eee6] dark:border-[#3e3428] bg-surface-light dark:bg-surface-dark py-12 px-6 lg:px-20">
+        <div class="mx-auto max-w-[1280px] grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="flex flex-col gap-4">
+                <span class="font-bold text-lg text-primary">Seasonal Decor</span>
+                <p class="text-text-muted-light text-sm leading-relaxed">Bringing warmth and style to your home, one season at a time.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Shop</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light">
+                    <li><a class="hover:text-primary transition-colors" href="#">All Collections</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Best Sellers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Support</h4>
+                <ul class="flex flex-col gap-2 text-sm text-text-muted-light">
+                    <li><a class="hover:text-primary transition-colors" href="#">Shipping & Returns</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Newsletter</h4>
+                <div class="flex gap-2">
+                    <input class="w-full h-10 px-3 rounded-lg bg-gray-50 dark:bg-background-dark border-none text-sm outline-none" placeholder="Your email" type="email"/>
+                    <button class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-primary text-white"><span class="material-symbols-outlined">arrow_forward</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-[1280px] mt-12 pt-8 border-t border-dashed border-gray-200 dark:border-[#3e3428] text-center text-xs text-text-muted-light">
+            © 2023 Seasonal Decor. All rights reserved.
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Logic Navigasi Mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('translate-x-full');
+        menuOverlay.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    if(menuBtn) menuBtn.onclick = toggleMenu;
+    if(closeMenu) closeMenu.onclick = toggleMenu;
+    if(menuOverlay) menuOverlay.onclick = toggleMenu;
+
+    // Logic Floating Buttons
+    const backToTopBtn = document.getElementById('backToTop');
+    window.onscroll = () => {
+        if (window.scrollY > 400) backToTopBtn.classList.add('show');
+        else backToTopBtn.classList.remove('show');
+    };
+    backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
+</body>
+</html>
